@@ -1,0 +1,14 @@
+{
+   "name": "freshbytes-server",
+   "version": "0.0.1",
+   "description": "Polls sensors, controls lights and pumps, provides REST API",
+   "author": "Jack Bowen",
+   "main": "freshServer.js",
+   "dependencies": {
+      "express": "~4.0.0",
+      "mysql": "^2.5.4",
+      "body-parser": "~1.0.1",
+      "node-schedule": "0.2.8",
+      "cors": "~2.7.0"
+   }
+}
