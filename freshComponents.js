@@ -4,7 +4,7 @@
 // This script provides functionality for our 3 sensor components and 2 power 
 // components. Our three sensor components are: pH, temperature, and the
 // nutrient density of the water (ppm). Our two power components control the
-// grow lights and 
+// grow lights and water pumps.
 // =============================================================================
 
 var db;
@@ -20,11 +20,11 @@ var readings = [];
 
 // Some of the sensors can take a while to poll so the following var is used in
 // order to keep track of which ones have successfully been polled. This is
-// useful when the time between polling sensors is very short, such as when a
+// useful for when the time between polling sensors is very short, such as when a
 // user would want to see live data instead of data that is only polled every
 // few minutes. It uses a binary flag to keep track of what's been polled. A 1
-// in a certain bits position indicates the sensor corresponding to that bit has
-// been successfully polled while a 0 indicates that sensor has yet to respond.
+// in a certain bit's position indicates that the sensor corresponding to that bit
+// has been successfully polled while a 0 indicates that sensor has yet to respond.
 // The bit in the 2^0 position represents temperature
 // The bit in the 2^1 position represents nutrient density (ppm)
 // The bit in the 2^2 position represents pH
@@ -60,9 +60,11 @@ module.exports = {
   pollSensors: function () {
     if (!readingFlag) {
       temperatureComponent.takeReading();
+
       // Our ppm and pH sensors rely on the same hardware so we must call them
       // synchronously. We will only poll the pH after we have already received
-      // a response from the ppm sensor
+      // a response from the ppm sensor. We take the pH reading in the callback
+      // for the ppm reading. 
       ppmComponent.takeReading();
     }
     else {
@@ -78,6 +80,8 @@ module.exports = {
     }
   },
 
+  // Check whether or not the power components should be turned on or off based
+  // on the mysql config files and set them accordingly. 
   cyclePower: function () {
     lightsComponent.fetchTimes();
     waterComponent.fetchTimes();

@@ -50,8 +50,6 @@ function publishAll(res) {
       res.json({ temperature: current.temperature, ph: current.ph, ppm: current.ppm, switchTime: current.switchTime, lights: lightsComponent.status, water: waterComponent.status});
    });
 }
-
-
 */
 
 
