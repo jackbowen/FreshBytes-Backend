@@ -49,7 +49,8 @@ while True:
          if line != '*OK' and line != '*ER':
             if chosenSensor == 'EC':
                line = line.split(",")[0]
-            if re.match("[0-9]+\.[0-9]+", line):
+
+            if re.match("[0-9]+\.*[0-9]*", line):
                print line
                GPIO.cleanup()
                sys.exit()

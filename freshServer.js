@@ -160,7 +160,7 @@ freshDebug.printStatusHeader();
 
 // How often to poll sensors in ms
 var pollInterval = 300000; // Every 5 minutes
-//var pollInterval = 5000;
+//var pollInterval = 10000;
 
 freshComponents.cyclePower();
 setInterval(function() {
