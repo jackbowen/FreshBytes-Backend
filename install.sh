@@ -54,6 +54,7 @@ grep core_freq=250 /boot/config.txt 2>/dev/null || {
 	echo "# Enable UART for Atlas Scientific probes (pH and EC)" >> /boot/config.txt;
 	echo "core_freq=250" >> /boot/config.txt;
 	echo "enable_uart=1" >> /boot/config.txt;
+	#TODO delete console=serial0,115200 from /boot/cmdline.txt
 }
 
 tempPath=/sys/class/gpio/gpio17
@@ -85,4 +86,8 @@ else
 	update-rc.d FreshBytesInit defaults
 fi
 
+chmod +x Components/*.sh
+chmod +x Components/*.py
+
 echo "Done."
+#TODO: prompt reboot

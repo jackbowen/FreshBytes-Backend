@@ -45,7 +45,7 @@ while True:
    while ser.in_waiting > 0:
       data = ser.read()
       if(data == "\r"):
-         print line
+         #print line
          if line != '*OK' and line != '*ER':
             if chosenSensor == 'EC':
                line = line.split(",")[0]

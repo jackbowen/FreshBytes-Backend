@@ -31,3 +31,4 @@ CREATE TABLE Readings (
 );
 INSERT INTO Readings (temperature, ph, ppm, switchTime, lights, water) VALUES (72.5, 6.25, 1250, 0, "Off", "Off");
 
+/* TODO: create a user named fb_user with no password and full privleges, flush privileges */

@@ -9,8 +9,7 @@ var mysql = require('mysql');
 // Set up our mysql connection
 var connection = mysql.createConnection({   
   host: 'localhost',
-  user: 'root',
-  password: ''
+  user: 'fb_user',
 }); 
 
 
@@ -33,3 +32,4 @@ module.exports = {
     connection.query(queryString, callback);
   }
 };
+
